@@ -8,7 +8,7 @@ import { OwnerModule } from './owner/owner.module';
 
 
 @Module({
-  imports: [CatsModule, MongooseModule.forRoot("mongodb://localhost/zoo"), OwnerModule],
+  imports: [CatsModule, MongooseModule.forRoot("mongodb://mongodb/zoo"), OwnerModule],
   controllers: [AppController],
   providers: [AppService],
 })

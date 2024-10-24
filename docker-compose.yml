@@ -1,0 +1,23 @@
+version: '1'
+services:
+ app:
+   image: wiemh/resp4sim4:2
+   ports:
+     - "3000:3000"
+   networks:
+     - zoonetwork  
+   depends_on:
+     - mongodb
+ mongodb:
+   image: mongo:latest
+   ports:
+     - "3005:27017"
+   networks:
+     - zoonetwork  
+   volumes:
+    - data:/data/db
+volumes:
+  data:
+networks:
+  zoonetwork:
+     

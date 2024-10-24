@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateOwnerDto } from './dto/create-owner.dto';
 import { UpdateOwnerDto } from './dto/update-owner.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Owner } from './entities/owner.entity';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class OwnerService {
-  create(createOwnerDto: CreateOwnerDto) {
-    return 'This action adds a new owner';
+  constructor(@InjectModel(Owner.name) private owneModel:Model<Owner>){}
+  async create(createOwnerDto: CreateOwnerDto) {
+    return this.owneModel.create(createOwnerDto);
   }
-
   findAll() {
     return `This action returns all owner`;
   }
